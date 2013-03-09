@@ -26,7 +26,7 @@ Built against Phonegap 2.4.0.
 
 2. From the Build Phases tab, expand Link Binary With Libraries, then click on the + button and add the lib_AppsFlyerLib.a file you recieved from AppsFlyer.
 
-3. From the Build Settings tab, find the Other Linker Flags and add -lAppFlyerLib
+3. From the Build Settings tab, find the Other Linker Flags and add -lAppsFlyerLib
 
 4. In the plugins section of your Resources/config.xml file, add the following:
 
