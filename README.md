@@ -1,4 +1,4 @@
-# AppsFlyer
+# PhoneGap
 
 AppsFlyer plugin for Phonegap. 
 
