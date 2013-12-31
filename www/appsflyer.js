@@ -10,7 +10,7 @@
 		options.devKey = devKey;
 		options.eventName = eventName;
 		options.eventValue = eventValue;
-    	cordova.exec(null, null, "AppsFlyerPlugin", "notifyAppID", [options]);
+    	cordova.exec(null, null, "AppsFlyerPlugin", "notifyAppID", [options.appId,options.devKey,options.eventName,options.eventValue]);
 	};
 
 	global.cordova.addConstructor(function() {
