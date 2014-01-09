@@ -4,15 +4,13 @@
 	};
 
 	AppsFlyer.prototype.notifyAppID = function (appId, devKey, eventName, eventValue) {
-		if (_.isString(appId) &&
-				_.isString(devKey)) {
-			if (_.isString(eventName) &&
-					eventName.length > 0) {
-				cordova.exec(null, null, "AppsFlyerPlugin", "notifyAppID", [appId, devKey, eventName, eventValue]);
-			} else {
-				cordova.exec(null, null, "AppsFlyerPlugin", "notifyAppID", [appId, devKey]);
-			}
-		}
+		var options;
+		options = {};
+		options.appId = appId;
+		options.devKey = devKey;
+		options.eventName = eventName;
+		options.eventValue = eventValue;
+    	cordova.exec(null, null, "AppsFlyerPlugin", "notifyAppID", [options.appId,options.devKey,options.eventName,options.eventValue]);
 	};
 
 	global.cordova.addConstructor(function() {
