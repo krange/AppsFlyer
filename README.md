@@ -2,7 +2,7 @@
 
 AppsFlyer plugin for Phonegap. 
 
-Built against Phonegap 2.4.0.
+Built against Phonegap 3.3.0.
 
 ## Installation
 
