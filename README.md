@@ -46,8 +46,8 @@ The supported methods are:
 
 - eventValue: (String)(Optional) The event sales value
 
-		window.plugins.appsFlyer.notifyAppID(currencyId);
+		window.plugins.appsFlyer.setCurrencyId(currencyId);
 - currencyId: (String)(Required) Currency Code (USD is default, GBP, EUR)		
 		
-		window.plugins.appsFlyer.notifyAppID(customeUserId);
+		window.plugins.appsFlyer.setCustomeUserId(customeUserId);
 - customeUserId: (String)(Required) the custome user id you would like to attach to each conversion
