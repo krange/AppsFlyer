@@ -1,5 +1,5 @@
 #import "AppsFlyerPlugin.h"
-#import "AppsFlyer.h"
+#import "AppsFlyerTracker.h"
 
 @implementation AppsFlyerPlugin
 
@@ -14,21 +14,62 @@
     if ([command.arguments count] < 2) {
 		return;
 	}
-    
+
     NSString* appId = [command.arguments objectAtIndex:0];
     NSString* devKey = [command.arguments objectAtIndex:1];
-    NSString* identifier = [appId stringByAppendingString:@";"];
-    identifier = [identifier stringByAppendingString:devKey];
+    
+   [AppsFlyerTracker sharedTracker].appleAppID = appId;
+
+   [AppsFlyerTracker sharedTracker].appsFlyerDevKey = devKey;
     
     //#ifdef CONFIGURATION_Release
     if ([command.arguments count] == 2) {
-        [AppsFlyer notifyAppID:identifier];
+    	[[AppsFlyerTracker sharedTracker] trackAppLaunch];
     } else if ([command.arguments count] == 3) {
-        [AppsFlyer notifyAppID:identifier event:[command.arguments objectAtIndex:2] eventValue:nil];
+    	[[AppsFlyerTracker sharedTracker] trackEvent:[command.arguments objectAtIndex:2] withValue:nil];
     } else if ([command.arguments count] == 4) {
-        [AppsFlyer notifyAppID:identifier event:[command.arguments objectAtIndex:2] eventValue:[command.arguments objectAtIndex:3]];
+    	[[AppsFlyerTracker sharedTracker] trackEvent:[command.arguments objectAtIndex:2] withValue:[command.arguments objectAtIndex:3]];
     }
     //#endif
 }
+
+
+
+- (void)setCurrencyId:(CDVInvokedUrlCommand*)command
+{
+    if ([command.arguments count] == 0) {
+		return;
+	}
+    
+    NSString* currencyId = [command.arguments objectAtIndex:0];
+
+    //#ifdef CONFIGURATION_Release
+    
+    [AppsFlyerTracker sharedTracker].currencyCode = currencyId; 
+    
+    //#endif
+}
+
+
+- (void)setCustomeUserId:(CDVInvokedUrlCommand*)command
+{
+    if ([command.arguments count] == 0) {
+		return;
+	}
+    
+    NSString* customeId = [command.arguments objectAtIndex:0];
+
+    //#ifdef CONFIGURATION_Release
+    
+	[AppsFlyerTracker sharedTracker].customerUserID = customerId;
+    
+    //#endif
+}
+
+
+
+
+
+
 
 @end

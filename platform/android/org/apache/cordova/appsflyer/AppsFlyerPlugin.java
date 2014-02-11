@@ -14,13 +14,65 @@ public class AppsFlyerPlugin extends CordovaPlugin {
 	
 	@Override
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-		if ("notifyAppID".equals(action)) {
+		if ("notifyAppID".equals(action)) 
+		{
 			notifyAppID(args);
 			return true;
+		} else if("setCurrencyId".equals(action))
+		{
+			setCurrencyId(args);
+			return true;
 		}
-		
+		else if("setCustomeUserId".equals(action))
+		{
+			setCustomeUserId(args);
+			return true;
+		}
 		return false;
 	}
+	
+	
+	private void setCurrencyId(JSONArray parameters)
+	{
+		String currencyId=null;
+		try
+		{
+			currencyId = parameters.getString(0);
+		}
+		catch (JSONException e) 
+		{
+			e.printStackTrace();
+			return;
+		}
+		if(currencyId == null || currencyId.length()==0)
+		{
+			return;
+		}
+		AppsFlyerLib.setCurrencyCode(currencyId);
+	
+	}
+	
+	private void setCustomeUserId(JSONArray parameters)
+	{
+		String customeUserId=null;
+		try
+		{
+			customeUserId = parameters.getString(0);
+		}
+		catch (JSONException e) 
+		{
+			e.printStackTrace();
+			return;
+		}
+		if(customeUserId == null || customeUserId.length()==0)
+		{
+			return;
+		}
+		AppsFlyerLib.setAppUserId(customeUserId);
+	
+	}
+	
+	
 	
 	private void notifyAppID(JSONArray parameters) {	
 		String appId = null;

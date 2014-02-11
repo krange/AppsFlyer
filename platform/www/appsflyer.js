@@ -12,6 +12,21 @@
 		options.eventValue = eventValue;
     	cordova.exec(null, null, "AppsFlyerPlugin", "notifyAppID", [options.appId,options.devKey,options.eventName,options.eventValue]);
 	};
+	
+	AppsFlyer.prototype.setCurrencyId = function (currencyId) {
+		var options;
+		options = {};
+		options.currencyId = currencyId;
+    	cordova.exec(null, null, "AppsFlyerPlugin", "setCurrencyId", [options.currencyId]);
+	};
+	
+	AppsFlyer.prototype.setCustomeUserId = function (customeUserId) {
+		var options;
+		options = {};
+		options.customeUserId = customeUserId;
+    	cordova.exec(null, null, "AppsFlyerPlugin", "setCustomeUserId", [options.customeUserId]);
+	};
+	
 
 	global.cordova.addConstructor(function() {
 		if (!global.Cordova) {
@@ -25,3 +40,4 @@
 		global.plugins.appsFlyer = new AppsFlyer();
 	});
 }(window));
+
