@@ -34,7 +34,7 @@ Built against Phonegap 3.3.0.
         
 ## API
 
-The only method supported is:
+The supported methods are:
 
 		window.plugins.appsFlyer.notifyAppID(appId, devKey, eventName, eventValue);
 		
@@ -45,3 +45,9 @@ The only method supported is:
 - eventName: (String)(Optional) The event name to define the event
 
 - eventValue: (String)(Optional) The event sales value
+
+		window.plugins.appsFlyer.notifyAppID(currencyId);
+- currencyId: (String)(Required) Currency Code (USD is default, GBP, EUR)		
+		
+		window.plugins.appsFlyer.notifyAppID(customeUserId);
+- customeUserId: (String)(Required) the custome user id you would like to attach to each conversion
