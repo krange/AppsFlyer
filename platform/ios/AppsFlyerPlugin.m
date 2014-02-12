@@ -61,7 +61,7 @@
 
     //#ifdef CONFIGURATION_Release
     
-	[AppsFlyerTracker sharedTracker].customerUserID = customerId;
+	[AppsFlyerTracker sharedTracker].customerUserID = customeId;
     
     //#endif
 }
