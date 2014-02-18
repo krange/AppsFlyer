@@ -24,7 +24,7 @@
    [AppsFlyerTracker sharedTracker].appsFlyerDevKey = devKey;
     
     //#ifdef CONFIGURATION_Release
-    if ([command.arguments count] == 2 || [eventName isEqualToString:@"<null>"]) {
+    if ([command.arguments count] == 2 || [eventName isEqual:[NSNull null]) {
     	[[AppsFlyerTracker sharedTracker] trackAppLaunch];
     } else if ([command.arguments count] == 3) {
     	[[AppsFlyerTracker sharedTracker] trackEvent:[command.arguments objectAtIndex:2] withValue:nil];
