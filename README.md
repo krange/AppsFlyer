@@ -36,6 +36,10 @@ Built against Phonegap 3.3.0.
 
 The supported methods are:
 
+for appInstall please use:
+		window.plugins.appsFlyer.notifyAppID(appId, devKey);
+
+for in app events please use:
 		window.plugins.appsFlyer.notifyAppID(appId, devKey, eventName, eventValue);
 		
 - appId: (String)(Required) App ID provided from AppsFlyer
