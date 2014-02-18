@@ -38,11 +38,11 @@ The supported methods are:
 
 for appInstall please use
 
-window.plugins.appsFlyer.notifyAppID(appId, devKey);
+	window.plugins.appsFlyer.notifyAppID(appId, devKey);
 
 for in app events please use
 
-window.plugins.appsFlyer.notifyAppID(appId, devKey, eventName, eventValue);
+	window.plugins.appsFlyer.notifyAppID(appId, devKey, eventName, eventValue);
 		
 - appId: (String)(Required) App ID provided from AppsFlyer
 
