@@ -6,7 +6,6 @@ Built against Phonegap >= 3.3.x.
 ## Installation using CLI:
 ```
 $ cordova plugin add https://github.com/AppsFlyerSDK/PhoneGap.git
-$ cordova prepare
 ```
 Then reference `appsflyer.js` in `index.html`, after `cordova.js`/`phonegap.js`. Mind the path:
 ```html
@@ -30,6 +29,7 @@ Then reference `appsflyer.js` in `index.html`, after `cordova.js`/`phonegap.js`.
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<uses-permission android:name="android.permission.READ_PHONE_STATE" />
 ```
 3\. Copy appsflyer.js to `www/js/plugins` and reference it in `index.html`:
 ```html
@@ -54,7 +54,7 @@ document.addEventListener("deviceready", function(){
     args.push(devKey);
     var userAgent = window.navigator.userAgent.toLowerCase();
                           
-    if (/iphone/.test( userAgent )) {
+    if (/iphone|ipad|ipod/.test( userAgent )) {
         var appId = "123456789";            // your ios app id in app store
         args.push(appId);
     }
@@ -64,7 +64,7 @@ document.addEventListener("deviceready", function(){
 
 #### 2\. Set currency code (optional)
 ```javascript
-//USD is default value. Acceptable ISO Currency codes here. Examples:  
+//USD is default value. Acceptable ISO(http://www.xe.com/iso4217.php) Currency codes here. Examples:  
 //British Pound: window.plugins.appsFlyer.setCurrencyCode("GBP");  
 window.plugins.appsFlyer.setCurrencyCode("USD");
 ```
@@ -76,7 +76,7 @@ with you internal IDs.*
 ```javascript
 window.plugins.appsFlyer.setAppUserId(userId);
 ```
-#### 4\. In App Conversion Events Tracking API (optional)
+#### 4\. In App Events Tracking API (optional)
 *These events help you track how loyal users discover your app and attribute them to specific campaign/source.*
 - *These in-app events help you track how loyal users discover your app, and attribute them to specific 
 campaigns/media-sources. Please take the time define the event/s you would like to measure to allow you 
