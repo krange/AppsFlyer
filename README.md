@@ -33,7 +33,7 @@ Then reference `appsflyer.js` in `index.html`, after `cordova.js`/`phonegap.js`.
 ```
 3\. Copy appsflyer.js to `www/js/plugins` and reference it in `index.html`:
 ```html
-<script type="text/javascript" src="js/plugins/Flashlight.js"></script>
+<script type="text/javascript" src="js/plugins/appsflyer.js"></script>
 ```
 4\. Download the source files and copy them to your project.
 
