@@ -20,7 +20,7 @@
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        id="com.appsflyer.cordova.plugins.appsflyer"
+        id="com.appsflyer.phonegap.plugins.appsflyer"
         version="1.0.0">
     <name>AppsFlyer</name>
     <description>Cordova AppsFlyer Plugin</description>
