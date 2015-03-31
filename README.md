@@ -2,6 +2,11 @@
 # PhoneGap AppsFlyer plugin for Android and iOS. 
 
 Built against Phonegap >= 3.3.x.
+## PhoneGap Build ##
+Add the following line to your config xml:
+```
+<gap:plugin name="com.appsflyer.phonegap.plugins.appsflyer" version="1.0.0" />
+```
 
 ## Installation using CLI:
 ```
