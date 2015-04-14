@@ -7,6 +7,21 @@ Add the following line to your config xml:
 ```
 <gap:plugin name="com.appsflyer.phonegap.plugins.appsflyer" version="1.0.0" />
 ```
+Add following lines to your code to be able to initialize tracking with your own AppsFlyer dev key:
+```javascript
+document.addEventListener("deviceready", function(){
+    var args = [];
+    var devKey = "xxXXXXXxXxXXXXxXXxxxx8";   // your AppsFlyer devKey
+    args.push(devKey);
+    var userAgent = window.navigator.userAgent.toLowerCase();
+                          
+    if (/iphone|ipad|ipod/.test( userAgent )) {
+        var appId = "123456789";            // your ios app id in app store
+        args.push(appId);
+    }
+	window.plugins.appsFlyer.initSdk(args);
+}, false);
+```
 
 ## Installation using CLI:
 ```
