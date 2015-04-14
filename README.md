@@ -5,7 +5,7 @@ Built against Phonegap >= 3.3.x.
 ## PhoneGap Build ##
 Add the following line to your config xml:
 ```
-<gap:plugin name="com.appsflyer.phonegap.plugins.appsflyer" version="1.0.0" />
+<gap:plugin name="com.appsflyer.phonegap.plugins.appsflyer" version="1.0.1" />
 ```
 Add following lines to your code to be able to initialize tracking with your own AppsFlyer dev key:
 ```javascript
