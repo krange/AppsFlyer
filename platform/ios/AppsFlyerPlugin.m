@@ -71,13 +71,18 @@
 }
 
 -(void)onConversionDataReceived:(NSDictionary*) installData {
+    NSMutableDictionary * eventData = [installData mutableCopy];
     NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:installData
-                                            options:0
-                                            error:&error];
+    NSData *jsonData;
+
+    eventData[@"event"] = @"onInstallConversionDataLoaded";
+
+    jsonData = [NSJSONSerialization dataWithJSONObject:eventData
+                                               options:0
+                                                 error:&error];
     if (jsonData) {
         NSString *JSONString = [[NSString alloc] initWithBytes:[jsonData bytes] length:[jsonData length] encoding:NSUTF8StringEncoding];
-        [[super webView] stringByEvaluatingJavaScriptFromString: [NSString stringWithFormat:@"javascript:window.plugins.appsFlyer.onInstallConversionDataLoaded(%@)", JSONString]];
+        [[super webView] stringByEvaluatingJavaScriptFromString: [NSString stringWithFormat:@"javascript:window.plugins.appsFlyer.generateEvent(%@)", JSONString]];
     } else {
         NSLog(@"%@",error);
     }

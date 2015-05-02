@@ -52,6 +52,9 @@ public class AppsFlyerPlugin extends CordovaPlugin {
 	
 	private void initSdk(JSONArray parameters, final CallbackContext callbackContext) {
 		String devKey = null;
+        JSONObject json = new JSONObject();
+        PluginResult r = new PluginResult(PluginResult.Status.OK, json);
+
 		try
 		{
 			devKey = parameters.getString(0);
@@ -70,8 +73,11 @@ public class AppsFlyerPlugin extends CordovaPlugin {
 
 			@Override
 			public void onAppOpenAttribution(Map<String, String> arg0) {
-				// TODO Auto-generated method stub
-				
+                arg0.put("event", "onAppOpenAttribution");
+                final JSONObject json = new JSONObject(arg0);
+                PluginResult r2 = new PluginResult(PluginResult.Status.OK, json);
+                r2.setKeepCallback(true);
+                callbackContext.sendPluginResult(r2);
 			}
 			
 			@Override
@@ -81,12 +87,11 @@ public class AppsFlyerPlugin extends CordovaPlugin {
 
 			@Override
 			public void onInstallConversionDataLoaded(Map<String, String> conversionData) {
-				final String json = new JSONObject(conversionData).toString();
-				webView.post(new Runnable() {
-					public void run() {
-						webView.loadUrl("javascript:window.plugins.appsFlyer.onInstallConversionDataLoaded('"+json+"')");
-					}
-				});
+                conversionData.put("event", "onInstallConversionDataLoaded");
+				final JSONObject json = new JSONObject(conversionData);
+                PluginResult r2 = new PluginResult(PluginResult.Status.OK, json);
+                r2.setKeepCallback(true);
+                callbackContext.sendPluginResult(r2);
 			}
 
 			@Override
@@ -96,7 +101,9 @@ public class AppsFlyerPlugin extends CordovaPlugin {
 			}
 			
 		});
-            	
+
+        r.setKeepCallback(true);
+        callbackContext.sendPluginResult(r);
 	}
 	
 	private void initListener() {

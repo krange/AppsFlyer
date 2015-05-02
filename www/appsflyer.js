@@ -11,7 +11,7 @@ if(!window.CustomEvent) {
 	};
 
 	AppsFlyer.prototype.initSdk = function (args) {
-    	cordova.exec(null, null, "AppsFlyerPlugin", "initSdk", args);
+    	cordova.exec(global.plugins.appsFlyer.generateEvent, null, "AppsFlyerPlugin", "initSdk", args);
 	};
 	
 	AppsFlyer.prototype.setCurrencyCode = function (currencyId) {
@@ -35,14 +35,13 @@ if(!window.CustomEvent) {
     	cordova.exec(null, null, "AppsFlyerPlugin", "sendTrackingWithEvent", [eventName,eventValue]);
 	};
 
-	AppsFlyer.prototype.onInstallConversionDataLoaded = function(conversionData) {
-        var data = conversionData,
-            event;
-        if (typeof data === "string") {
-            data = JSON.parse(conversionData);
+	AppsFlyer.prototype.generateEvent = function(eventData) {
+        var data = eventData, event;
+
+        if(data.event) {
+    		event = new CustomEvent(data.event, {'detail': data});
+    		global.document.dispatchEvent(event);
         }
-		event = new CustomEvent('onInstallConversionDataLoaded', {'detail': data});
-		global.document.dispatchEvent(event);
 	};
 
 	global.cordova.addConstructor(function() {
