@@ -75,5 +75,7 @@
         <header-file src="platform/ios/AppsFlyerTracker.h" />
         <source-file src="platform/ios/AppsFlyerPlugin.m" />
         <source-file src="platform/ios/libAppsFlyerLib.a" compiler-flags="-lAppsFlyerLib" framework="true" />
+        <framework src="AdSupport.framework" weak="true" />
+        <framework src="iAd.framework" weak="true" />
     </platform>
 </plugin>
