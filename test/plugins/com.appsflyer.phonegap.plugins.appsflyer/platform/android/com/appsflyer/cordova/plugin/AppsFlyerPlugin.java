@@ -1,5 +1,7 @@
 package com.appsflyer.cordova.plugin;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -47,6 +49,10 @@ public class AppsFlyerPlugin extends CordovaPlugin {
 			initSdk(args,callbackContext);
 			return true;
 		}
+		else if ("trackEvent".equals(action)) {
+			trackEvent(args);
+		}
+
 		return false;
 	}
 	
@@ -130,6 +136,28 @@ public class AppsFlyerPlugin extends CordovaPlugin {
 		AppsFlyerLib.sendTrackingWithEvent(c,eventName,eventValue);
 	}
 
+	private void trackEvent(JSONArray parameters) {
+		String eventName = null;
+		Map<String, Object> eventValues = null;
+		try
+		{
+			eventName = parameters.getString(0);
+			JSONObject jsonEventValues = parameters.getJSONObject(1);
+			eventValues = jsonTOMap(jsonEventValues.toString());
+
+		}
+		catch (JSONException e) 
+		{
+			e.printStackTrace();
+			return;
+		}
+		if(eventName == null || eventName.length()==0)
+		{
+			return;
+		}
+		Context c = this.cordova.getActivity().getApplicationContext();
+		AppsFlyerLib.trackEvent(c, eventName, eventValues);
+	}
 
 	private void setCurrencyCode(JSONArray parameters)
 	{
@@ -178,5 +206,23 @@ public class AppsFlyerPlugin extends CordovaPlugin {
     	PluginResult r = new PluginResult(PluginResult.Status.OK, id);
     	r.setKeepCallback(false);
     	callbackContext.sendPluginResult(r);
+	}
+
+	private static Map<String,Object> jsonTOMap(String inputString){
+		Map<String,Object> newMap = new HashMap<String, Object>();
+
+		try {
+			JSONObject jsonObject = new JSONObject(inputString);
+			Iterator iterator = jsonObject.keys();
+			while (iterator.hasNext()){
+				String key = (String) iterator.next();
+				newMap.put(key,jsonObject.getString(key));
+
+			}
+		} catch(JSONException e) {
+			return null;
+		}
+
+		return newMap;
 	}
 }

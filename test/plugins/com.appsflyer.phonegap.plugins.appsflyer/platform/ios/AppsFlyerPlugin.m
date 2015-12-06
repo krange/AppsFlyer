@@ -89,4 +89,13 @@
     
 }
 
+- (void)trackEvent:(CDVInvokedUrlCommand*)command {
+
+    NSString* eventName = [command.arguments objectAtIndex:0];
+    NSDictionary* eventValues = [command.arguments objectAtIndex:1];
+    [[AppsFlyerTracker sharedTracker] trackEvent:eventName withValues:eventValues];
+
+}
+
+
 @end

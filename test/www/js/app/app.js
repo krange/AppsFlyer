@@ -20,14 +20,19 @@
 			window.plugins.appsFlyer.setCurrencyCode(currencyId);
 		};
 		$scope.setUserId = function(userAppId) {
-			userAppId = "1234567890";
+			userAppId = "887788778";
 		};
 		$scope.getUserId = function() {
 			window.plugins.appsFlyer.getAppsFlyerUID(getUserIdCallbackFn);
 		};
-
 		var getUserIdCallbackFn = function(id) {
 			alert('received id is: ' + id);
+		}
+		$scope.trackEvent = function (eventName, eventValue) {	
+			
+			eventName = "af_add_to_cart";
+			eventValue = { "af_content_id": "id1234", "af_revenue": 2, "af_content_type", "type 1" };
+			window.plugins.appsFlyer.trackEvent(eventName, eventValue);
 		}
 	}]);
 })();
