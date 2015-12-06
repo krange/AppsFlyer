@@ -109,6 +109,14 @@ add events dynamically by adding them directly to the application code.*
 window.plugins.appsFlyer.sendTrackingWithEvent(eventName, eventValue);
 // window.plugins.appsFlyer.sendTrackingWithEvent(eventName, "");
 ```
+#### 4\.1 Rich In App Events Tracking API (optional)
+AppsFlyer’s rich in­app events provide advertisers with the ability to track any post­install event and attribute it to a media source and campaign.An in­app event is comprised of an event name and event parameters
+
+```javascript
+var eventName = "af_add_to_cart";
+var eventValues = {"af_content_id": "id123", "af_currency":"USD", "af_revenue": "2"};
+window.plugins.appsFlyer.trackEvent(eventName, eventValues);
+```
 #### 5\. Get AppsFlyer’s Unique Device UID (Advanced)
 *Get AppsFlyer’s proprietary device ID. AppsFlyer device ID is the main ID used by AppsFlyer in the Reports and API’s.*
 ```javascript
