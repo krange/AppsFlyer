@@ -19,9 +19,10 @@ import com.appsflyer.AppsFlyerLib;
 
 import android.content.Context;
 import android.util.Log;
+import android.os.Build;
 
 public class AppsFlyerPlugin extends CordovaPlugin {
-	
+
 	@Override
 	public boolean execute(final String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 		if("setCurrencyCode".equals(action))
@@ -55,7 +56,7 @@ public class AppsFlyerPlugin extends CordovaPlugin {
 
 		return false;
 	}
-	
+
 	private void initSdk(JSONArray parameters, final CallbackContext callbackContext) {
 		String devKey = null;
 		try
@@ -66,20 +67,20 @@ public class AppsFlyerPlugin extends CordovaPlugin {
 				initListener();
 			}
 		}
-		catch (JSONException e) 
+		catch (JSONException e)
 		{
 			e.printStackTrace();
 			return;
 		}
-    	
+
 		AppsFlyerLib.registerConversionListener(cordova.getActivity().getApplicationContext(), new AppsFlyerConversionListener(){
 
 			@Override
 			public void onAppOpenAttribution(Map<String, String> arg0) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void onAttributionFailure(String errorMessage) {
 				//Added this to avoid compilation failure
@@ -90,7 +91,12 @@ public class AppsFlyerPlugin extends CordovaPlugin {
 				final String json = new JSONObject(conversionData).toString();
 				webView.getView().post(new Runnable() {
 					public void run() {
-						webView.loadUrl("javascript:window.plugins.appsFlyer.onInstallConversionDataLoaded('"+json+"')");
+						String js = "window.plugins.appsFlyer.onInstallConversionDataLoaded('"+json+"')";
+						if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+				      webView.sendJavascript(js);
+				    } else {
+				      webView.loadUrl("javascript:" + js);
+				    }
 					}
 				});
 			}
@@ -98,13 +104,13 @@ public class AppsFlyerPlugin extends CordovaPlugin {
 			@Override
 			public void onInstallConversionFailure(String arg0) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 		});
-            	
+
 	}
-	
+
 	private void initListener() {
 		Runnable task = new Runnable() {
 		    public void run() {
@@ -114,7 +120,7 @@ public class AppsFlyerPlugin extends CordovaPlugin {
 		ScheduledExecutorService worker = Executors.newSingleThreadScheduledExecutor();
 		worker.schedule(task, 500, TimeUnit.MILLISECONDS);
 	}
-	
+
 	private void sendTrackingWithEvent(JSONArray parameters) {
 		String eventName = null;
 		String eventValue = "";
@@ -123,7 +129,7 @@ public class AppsFlyerPlugin extends CordovaPlugin {
 			eventName = parameters.getString(0);
 			eventValue = parameters.getString(1);
 		}
-		catch (JSONException e) 
+		catch (JSONException e)
 		{
 			e.printStackTrace();
 			return;
@@ -166,7 +172,7 @@ public class AppsFlyerPlugin extends CordovaPlugin {
 		{
 			currencyId = parameters.getString(0);
 		}
-		catch (JSONException e) 
+		catch (JSONException e)
 		{
 			e.printStackTrace();
 			return;
@@ -176,9 +182,9 @@ public class AppsFlyerPlugin extends CordovaPlugin {
 			return;
 		}
 		AppsFlyerLib.setCurrencyCode(currencyId);
-	
+
 	}
-	
+
 	private void setAppUserId(JSONArray parameters, CallbackContext callbackContext)
 	{
 		try
@@ -193,13 +199,13 @@ public class AppsFlyerPlugin extends CordovaPlugin {
         	r.setKeepCallback(false);
         	callbackContext.sendPluginResult(r);
 		}
-		catch (JSONException e) 
+		catch (JSONException e)
 		{
 			e.printStackTrace();
 			return;
-		}	
+		}
 	}
-	
+
 	private void getAppsFlyerUID(JSONArray parameters, CallbackContext callbackContext)
 	{
     	String id = AppsFlyerLib.getAppsFlyerUID(cordova.getActivity().getApplicationContext());
