@@ -111,18 +111,6 @@ public class AppsFlyerPlugin extends CordovaPlugin {
 
 		});
 
-	}
-
-	// private void initListener() {
-	// 	Runnable task = new Runnable() {
-	// 	    public void run() {
-	// 	    	AppsFlyerLib.getInstance().sendTracking(cordova.getActivity().getApplicationContext());
-	// 	    }
-	// 	};
-	// 	ScheduledExecutorService worker = Executors.newSingleThreadScheduledExecutor();
-	// 	worker.schedule(task, 500, TimeUnit.MILLISECONDS);
-	// }
-
 	private void sendTrackingWithEvent(JSONArray parameters) {
 		String eventName = null;
 		String eventValue = "";
