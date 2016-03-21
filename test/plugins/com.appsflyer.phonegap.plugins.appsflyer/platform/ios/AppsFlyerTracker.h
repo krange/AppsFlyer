@@ -221,13 +221,6 @@ typedef enum  {
  */
 - (void) loadConversionDataWithDelegate:(id<AppsFlyerTrackerDelegate>) delegate __attribute__((deprecated));
 
-
-/*
- * In case you want to use AppsFlyer tracking data in your app you can use the following method set a
- * delegate with callback buttons for the tracking data. See AppsFlyerTrackerDelegate above.
- */
-- (void) getConversionData:(void (^)(NSDictionary *attributionDetails, NSError *error))completionHandler;
-
 /*
  * In case you want to track deep linking, call this method from your delegate's openURL method.
  */

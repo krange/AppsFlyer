@@ -21,12 +21,10 @@
     [AppsFlyerTracker sharedTracker].appleAppID = appId;
     [AppsFlyerTracker sharedTracker].appsFlyerDevKey = devKey;
     [AppsFlyerTracker sharedTracker].isDebug = YES;
+    [AppsFlyerTracker sharedTracker].delegate = self;
     [[AppsFlyerTracker sharedTracker] trackAppLaunch];
     
-    [[AppsFlyerTracker sharedTracker] getConversionData:^(NSDictionary *attributionData, NSError *error){
-        NSLog(@"attribution data: %@", attributionData);
-    }];}
-
+}
 
 - (void)setCurrencyCode:(CDVInvokedUrlCommand*)command
 {
