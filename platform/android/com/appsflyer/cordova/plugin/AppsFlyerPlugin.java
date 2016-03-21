@@ -40,11 +40,6 @@ public class AppsFlyerPlugin extends CordovaPlugin {
 			getAppsFlyerUID(args, callbackContext);
 			return true;
 		}
-		else if("sendTrackingWithEvent".equals(action))
-		{
-			sendTrackingWithEvent(args);
-			return true;
-		}
 		else if("initSdk".equals(action))
 		{
 			initSdk(args,callbackContext);
@@ -111,30 +106,11 @@ public class AppsFlyerPlugin extends CordovaPlugin {
 
 		});
 
-	private void sendTrackingWithEvent(JSONArray parameters) {
-		String eventName = null;
-		String eventValue = "";
-		try
-		{
-			eventName = parameters.getString(0);
-			eventValue = parameters.getString(1);
-		}
-		catch (JSONException e)
-		{
-			e.printStackTrace();
-			return;
-		}
-		if(eventName == null || eventName.length()==0)
-		{
-			return;
-		}
-		Context c = this.cordova.getActivity().getApplicationContext();
-		AppsFlyerLib.getInstance().sendTrackingWithEvent(c,eventName,eventValue);
 	}
 
 	private void trackEvent(JSONArray parameters) {
-		String eventName = null;
-		Map<String, Object> eventValues = null;
+		String eventName;
+		Map<String, Object> eventValues;
 		try
 		{
 			eventName = parameters.getString(0);
@@ -224,8 +200,13 @@ public class AppsFlyerPlugin extends CordovaPlugin {
 
 
 	private void setGCMProjectID(JSONArray parameters) {
-		String gcmProjectId = parameters.getString(0);
-	
+		String gcmProjectId = null;
+		try {
+			gcmProjectId = parameters.getString(0);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+
 		if(gcmProjectId == null || gcmProjectId.length()==0)
 		{
 			return;
