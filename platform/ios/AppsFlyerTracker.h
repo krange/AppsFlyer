@@ -2,7 +2,7 @@
 //  AppsFlyerTracker.h
 //  AppsFlyerLib
 //
-//  AppsFlyer iOS SDK v4.3.7
+//  AppsFlyer iOS SDK v4.4.0
 //  21-Jan-2016
 //  Copyright (c) 2013 AppsFlyer Ltd. All rights reserved.
 //
@@ -93,7 +93,7 @@ typedef enum  {
 
 @end
 
-@interface AppsFlyerTracker : NSObject <AppsFlyerTrackerDelegate>{
+@interface AppsFlyerTracker : NSObject {
 
     BOOL _isDebug;
     BOOL didCollectIAdData;
@@ -221,6 +221,13 @@ typedef enum  {
  */
 - (void) loadConversionDataWithDelegate:(id<AppsFlyerTrackerDelegate>) delegate __attribute__((deprecated));
 
+
+/*
+ * In case you want to use AppsFlyer tracking data in your app you can use the following method set a
+ * delegate with callback buttons for the tracking data. See AppsFlyerTrackerDelegate above.
+ */
+- (void) getConversionData:(void (^)(NSDictionary *attributionDetails, NSError *error))completionHandler;
+
 /*
  * In case you want to track deep linking, call this method from your delegate's openURL method.
  */
@@ -229,7 +236,7 @@ typedef enum  {
 /*
  * In case you want to track deep linking, call this method from your delegate's openURL method with refferer.
  */
-- (void) handleOpenURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication withAnnotaion:(id) annotation;
+- (void) handleOpenURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication withAnnotation:(id) annotation;
 
 /* 
  * For Universal links iOS 9
@@ -237,7 +244,6 @@ typedef enum  {
 
 -(void) continueUserActivity:(NSUserActivity *) userActivity restorationHandler:(void (^)(NSArray *))restorationHandler NS_AVAILABLE_IOS(9_0);
 -(void) didUpdateUserActivity:(NSUserActivity *)userActivity NS_AVAILABLE_IOS(9_0);
-
 -(void) handlePushNotification:(NSDictionary *) pushPayload;
 
 

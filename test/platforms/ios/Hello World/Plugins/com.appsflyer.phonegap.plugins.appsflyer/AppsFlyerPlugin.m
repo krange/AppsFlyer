@@ -16,18 +16,17 @@
     }
     
     NSString* devKey = [command.arguments objectAtIndex:0];
-    NSString* appId = [command.arguments objectAtIndex:1];
-    
+    NSString* appId = [command.arguments objectAtIndex:1];    
     
     [AppsFlyerTracker sharedTracker].appleAppID = appId;
     [AppsFlyerTracker sharedTracker].appsFlyerDevKey = devKey;
+    [AppsFlyerTracker sharedTracker].isDebug = YES;
     [[AppsFlyerTracker sharedTracker] trackAppLaunch];
-    [self performSelector:@selector(initDelegate) withObject:nil afterDelay:7];
-}
+    
+    [[AppsFlyerTracker sharedTracker] getConversionData:^(NSDictionary *attributionData, NSError *error){
+        NSLog(@"attribution data: %@", attributionData);
+    }];}
 
-- (void) initDelegate{
-    [AppsFlyerTracker sharedTracker].delegate = self;
-}
 
 - (void)setCurrencyCode:(CDVInvokedUrlCommand*)command
 {
@@ -87,6 +86,14 @@
     
     NSLog(@"%@",error);
     
+}
+
+- (void)trackEvent:(CDVInvokedUrlCommand*)command {
+
+    NSString* eventName = [command.arguments objectAtIndex:0];
+    NSDictionary* eventValues = [command.arguments objectAtIndex:1];
+    [[AppsFlyerTracker sharedTracker] trackEvent:eventName withValues:eventValues];
+
 }
 
 @end
