@@ -5,7 +5,7 @@
 
 - (CDVPlugin *)initWithWebView:(UIWebView *)theWebView
 {
-    self = (AppsFlyerPlugin *)[super initWithWebView:theWebView];
+    [self pluginInitialize];
     return self;
 }
 
