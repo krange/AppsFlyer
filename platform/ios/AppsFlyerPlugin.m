@@ -75,7 +75,7 @@
     if (jsonData) {
         NSString *JSONString = [[NSString alloc] initWithBytes:[jsonData bytes] length:[jsonData length] encoding:NSUTF8StringEncoding];
         
-        [self performSelectorOnMainThread:@selector(reportConversionData) withObject:JSONString waitUntilDone:NO];
+        [self performSelectorOnMainThread:@selector(reportConversionData:) withObject:JSONString waitUntilDone:NO];
         NSLog(@"JSONString = %@",JSONString);
 
     } else {
