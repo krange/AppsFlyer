@@ -1,7 +1,7 @@
 
 # PhoneGap AppsFlyer plugin for Android and iOS. 
 
-Built against Phonegap >= 3.3.x.
+Built against Phonegap >= 4.3.x.
 ## PhoneGap Build ##
 Add the following line to your config xml:
 ```
@@ -103,14 +103,6 @@ campaigns/media-sources. Please take the time define the event/s you would like 
 to track ROI (Return on Investment) and LTV (Lifetime Value).*
 - *The “trackEvent” method allows you to send in-app events to AppsFlyer analytics. This method allows you to 
 add events dynamically by adding them directly to the application code.*
-```javascript
-// eventName - any string to define the event name. For example: “registration” or “purchase”
-// eventValue - the sales value. For example: 0.99 or 0.79
-window.plugins.appsFlyer.sendTrackingWithEvent(eventName, eventValue);
-// window.plugins.appsFlyer.sendTrackingWithEvent(eventName, "");
-```
-#### 4\.1 Rich In App Events Tracking API (optional)
-AppsFlyer’s rich in­app events provide advertisers with the ability to track any post­install event and attribute it to a media source and campaign.An in­app event is comprised of an event name and event parameters
 
 ```javascript
 var eventName = "af_add_to_cart";

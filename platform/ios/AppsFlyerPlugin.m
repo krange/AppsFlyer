@@ -74,13 +74,19 @@
                                             error:&error];
     if (jsonData) {
         NSString *JSONString = [[NSString alloc] initWithBytes:[jsonData bytes] length:[jsonData length] encoding:NSUTF8StringEncoding];
-        [[super webViewEngine] evaluateJavaScript:[NSString stringWithFormat:@"javascript:window.plugins.appsFlyer.onInstallConversionDataLoaded(%@)", JSONString] completionHandler:nil];
         
+        [self performSelectorOnMainThread:@selector(reportConversionData) withObject:JSONString waitUntilDone:NO];
         NSLog(@"JSONString = %@",JSONString);
 
     } else {
         NSLog(@"%@",error);
     }
+}
+
+-(void) reportConversionData:(NSString *)data {
+    
+    [[super webViewEngine] evaluateJavaScript:[NSString stringWithFormat:@"javascript:window.plugins.appsFlyer.onInstallConversionDataLoaded(%@)", data] completionHandler:nil];
+
 }
 
 -(void)onConversionDataRequestFailure:(NSError *) error {
