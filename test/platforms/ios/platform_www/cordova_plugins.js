@@ -13,7 +13,6 @@ module.exports.metadata =
 // TOP OF METADATA
 {
     "com.appsflyer.phonegap.plugins.appsflyer": "4.0",
-    "cordova-plugin-googleplayservices": "19.0.3",
     "cordova-plugin-whitelist": "1.2.1"
 }
 // BOTTOM OF METADATA

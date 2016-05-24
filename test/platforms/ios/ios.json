@@ -21,9 +21,6 @@
         "com.appsflyer.phonegap.plugins.appsflyer": {
             "PACKAGE_NAME": "pg.appsflyer.sampleapp"
         },
-        "cordova-plugin-googleplayservices": {
-            "PACKAGE_NAME": "pg.appsflyer.sampleapp"
-        },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "pg.appsflyer.sampleapp"
         }
@@ -41,7 +38,6 @@
     ],
     "plugin_metadata": {
         "com.appsflyer.phonegap.plugins.appsflyer": "4.0",
-        "cordova-plugin-googleplayservices": "19.0.3",
         "cordova-plugin-whitelist": "1.2.1"
     }
 }

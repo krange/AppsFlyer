@@ -21,6 +21,7 @@ import android.content.Context;
 import android.util.Log;
 import android.os.Build;
 
+
 public class AppsFlyerPlugin extends CordovaPlugin {
 
 	@Override
@@ -59,7 +60,6 @@ public class AppsFlyerPlugin extends CordovaPlugin {
         Context c = this.cordova.getActivity().getApplicationContext();
         AppsFlyerLib.getInstance().trackEvent(c, null, null);
     }
-
 	private void initSdk(JSONArray parameters, final CallbackContext callbackContext) {
         Log.d("AppsFlyer", "Starting Tracking");
         trackAppLaunch();
@@ -219,6 +219,6 @@ public class AppsFlyerPlugin extends CordovaPlugin {
 			return;
 		}
 		Context c = this.cordova.getActivity().getApplicationContext();
-		AppsFlyerLib.getInstance().setGCMProjectID(c, gcmProjectId);
+		AppsFlyerLib.getInstance().setGCMProjectNumber(gcmProjectId);
 	}
 }

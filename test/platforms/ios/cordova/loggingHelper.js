@@ -1,6 +1,4 @@
-#!/usr/bin/env node
-
-/*
+/**
     Licensed to the Apache Software Foundation (ASF) under one
     or more contributor license agreements.  See the NOTICE file
     distributed with this work for additional information
@@ -19,17 +17,14 @@
     under the License.
 */
 
-/*
+var CordovaLogger = require('cordova-common').CordovaLogger;
 
-    Returns the VERSION of CordovaLib used.
-    Note: it does not work if the --shared option was used to create the project.
-*/
-
-// Coho updates this line
-var VERSION="4.1.1";
-
-module.exports.version = VERSION;
-
-if (!module.parent) {
-    console.log(VERSION);
-}
+module.exports = {
+    adjustLoggerLevel: function (opts) {
+        if (opts.verbose || (Array.isArray(opts) && opts.indexOf('--verbose') !== -1)) {
+            CordovaLogger.get().setLevel('verbose');
+        } else if (opts.silent || (Array.isArray(opts) && opts.indexOf('--silent') !== -1)) {
+            CordovaLogger.get().setLevel('error');
+        }
+    }
+};

@@ -9,7 +9,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
         <receiver android:exported="true" android:name="com.appsflyer.MultipleInstallBroadcastReceiver">
             <intent-filter>
                 <action android:name="com.android.vending.INSTALL_REFERRER" />

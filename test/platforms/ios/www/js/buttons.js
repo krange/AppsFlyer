@@ -17,24 +17,23 @@ if(func4){
 }
 
  function setCurrency(currencyId){
-    console.log("Curreny set");
     currencyId = "USD";
+    alert('Currency Set: '+currencyId);
     window.plugins.appsFlyer.setCurrencyCode(currencyId);
 }
  function setUserId(userAppId) {
-    console.log("User set");
     userAppId = "887788778";
+     alert('Set User ID: '+userAppId);
     window.plugins.appsFlyer.setAppUserId(userAppId);
 }
  function getUserId() {
-    console.log("Got user Id");
     window.plugins.appsFlyer.getAppsFlyerUID(getUserIdCallbackFn);
 }
  function getUserIdCallbackFn(id) {
     alert('received id is: ' + id);
 }
  function trackEvent(eventName, eventValues) {
-    console.log("Event tracked");
+    alert('Event Tracked');
     eventName = "af_add_to_cart";
     eventValues = {"af_content_id": "id123", "af_currency":"USD", "af_revenue": "2"};
     window.plugins.appsFlyer.trackEvent(eventName, eventValues);

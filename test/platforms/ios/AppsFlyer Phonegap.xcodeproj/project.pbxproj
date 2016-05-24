@@ -15,11 +15,11 @@
 		3047A5121AB8059700498E2A /* build-debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 3047A50F1AB8059700498E2A /* build-debug.xcconfig */; };
 		3047A5131AB8059700498E2A /* build-release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 3047A5101AB8059700498E2A /* build-release.xcconfig */; };
 		3047A5141AB8059700498E2A /* build.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 3047A5111AB8059700498E2A /* build.xcconfig */; };
-		0A25FB0FC2044D51A4AB42A7 /* AppsFlyerPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 019D88971151452399A8BEE6 /* AppsFlyerPlugin.m */; };
-		A160E9B116314F07AE9C3AFC /* libAppsFlyerLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5A1117577843AAA389BDD9 /* libAppsFlyerLib.a */; };
-		3DDCFD08DAAE4004A859A0A3 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491721DBBE3C44B3B0B9F38B /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		497A93E7454F46E0BF5C2BE7 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC78E88880404F4D9FADA0DA /* iAd.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		430A9042AFB54DBCB2EF1CAF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC9534A0317948A1B997928E /* Security.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		D62D2C8DE67E4812B7B5D346 /* AppsFlyerPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E02E771973748FEB849C636 /* AppsFlyerPlugin.m */; };
+		7300F8B061E3403F863140B4 /* libAppsFlyerLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A54B4BB1964D5593144F04 /* libAppsFlyerLib.a */; };
+		F9FEA38F7B4445E29C23715B /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5986649D0C45A08B06C17A /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		CDB50384C3ED47F7A77AE30D /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D20D57B56F4730A74A32A7 /* iAd.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		BBD8950C7EFC432292D31A5C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9CF62217EA944DCB23B19C4 /* Security.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,13 +59,13 @@
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "AppsFlyer Phonegap/config.xml"; sourceTree = "<group>"; };
 		ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "Bridging-Header.h"; sourceTree = "<group>"; };
-		019D88971151452399A8BEE6 /* AppsFlyerPlugin.m */ = {isa = PBXFileReference; name = "AppsFlyerPlugin.m"; path = "com.appsflyer.phonegap.plugins.appsflyer/AppsFlyerPlugin.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
-		3B5A1117577843AAA389BDD9 /* libAppsFlyerLib.a */ = {isa = PBXFileReference; name = "libAppsFlyerLib.a"; path = "AppsFlyer Phonegap/Plugins/com.appsflyer.phonegap.plugins.appsflyer/libAppsFlyerLib.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
-		55D3893E31584906AE1FDDDC /* AppsFlyerPlugin.h */ = {isa = PBXFileReference; name = "AppsFlyerPlugin.h"; path = "com.appsflyer.phonegap.plugins.appsflyer/AppsFlyerPlugin.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
-		BF87291BDA604ECBA2729378 /* AppsFlyerTracker.h */ = {isa = PBXFileReference; name = "AppsFlyerTracker.h"; path = "com.appsflyer.phonegap.plugins.appsflyer/AppsFlyerTracker.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
-		491721DBBE3C44B3B0B9F38B /* AdSupport.framework */ = {isa = PBXFileReference; name = "AdSupport.framework"; path = "System/Library/Frameworks/AdSupport.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
-		FC78E88880404F4D9FADA0DA /* iAd.framework */ = {isa = PBXFileReference; name = "iAd.framework"; path = "System/Library/Frameworks/iAd.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
-		EC9534A0317948A1B997928E /* Security.framework */ = {isa = PBXFileReference; name = "Security.framework"; path = "System/Library/Frameworks/Security.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		1E02E771973748FEB849C636 /* AppsFlyerPlugin.m */ = {isa = PBXFileReference; name = "AppsFlyerPlugin.m"; path = "com.appsflyer.phonegap.plugins.appsflyer/AppsFlyerPlugin.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		09A54B4BB1964D5593144F04 /* libAppsFlyerLib.a */ = {isa = PBXFileReference; name = "libAppsFlyerLib.a"; path = "AppsFlyer Phonegap/Plugins/com.appsflyer.phonegap.plugins.appsflyer/libAppsFlyerLib.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		9216F5E61FA04D4197D6E056 /* AppsFlyerPlugin.h */ = {isa = PBXFileReference; name = "AppsFlyerPlugin.h"; path = "com.appsflyer.phonegap.plugins.appsflyer/AppsFlyerPlugin.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		9280A91840BF4F3B993B9052 /* AppsFlyerTracker.h */ = {isa = PBXFileReference; name = "AppsFlyerTracker.h"; path = "com.appsflyer.phonegap.plugins.appsflyer/AppsFlyerTracker.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		CE5986649D0C45A08B06C17A /* AdSupport.framework */ = {isa = PBXFileReference; name = "AdSupport.framework"; path = "System/Library/Frameworks/AdSupport.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		73D20D57B56F4730A74A32A7 /* iAd.framework */ = {isa = PBXFileReference; name = "iAd.framework"; path = "System/Library/Frameworks/iAd.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		F9CF62217EA944DCB23B19C4 /* Security.framework */ = {isa = PBXFileReference; name = "Security.framework"; path = "System/Library/Frameworks/Security.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,10 +74,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
-				A160E9B116314F07AE9C3AFC /* libAppsFlyerLib.a in Frameworks */,
-				3DDCFD08DAAE4004A859A0A3 /* AdSupport.framework in Frameworks */,
-				497A93E7454F46E0BF5C2BE7 /* iAd.framework in Frameworks */,
-				430A9042AFB54DBCB2EF1CAF /* Security.framework in Frameworks */,
+				7300F8B061E3403F863140B4 /* libAppsFlyerLib.a in Frameworks */,
+				F9FEA38F7B4445E29C23715B /* AdSupport.framework in Frameworks */,
+				CDB50384C3ED47F7A77AE30D /* iAd.framework in Frameworks */,
+				BBD8950C7EFC432292D31A5C /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,10 +147,10 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3B5A1117577843AAA389BDD9 /* libAppsFlyerLib.a */,
-				491721DBBE3C44B3B0B9F38B /* AdSupport.framework */,
-				FC78E88880404F4D9FADA0DA /* iAd.framework */,
-				EC9534A0317948A1B997928E /* Security.framework */,
+				09A54B4BB1964D5593144F04 /* libAppsFlyerLib.a */,
+				CE5986649D0C45A08B06C17A /* AdSupport.framework */,
+				73D20D57B56F4730A74A32A7 /* iAd.framework */,
+				F9CF62217EA944DCB23B19C4 /* Security.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -176,9 +176,9 @@
 		307C750510C5A3420062BCA9 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				019D88971151452399A8BEE6 /* AppsFlyerPlugin.m */,
-				55D3893E31584906AE1FDDDC /* AppsFlyerPlugin.h */,
-				BF87291BDA604ECBA2729378 /* AppsFlyerTracker.h */,
+				1E02E771973748FEB849C636 /* AppsFlyerPlugin.m */,
+				9216F5E61FA04D4197D6E056 /* AppsFlyerPlugin.h */,
+				9280A91840BF4F3B993B9052 /* AppsFlyerTracker.h */,
 			);
 			name = Plugins;
 			path = "AppsFlyer Phonegap/Plugins";
@@ -293,7 +293,7 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
-				0A25FB0FC2044D51A4AB42A7 /* AppsFlyerPlugin.m in Sources */,
+				D62D2C8DE67E4812B7B5D346 /* AppsFlyerPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

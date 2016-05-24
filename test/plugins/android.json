@@ -14,9 +14,5 @@
             "PACKAGE_NAME": "pg.appsflyer.sampleapp"
         }
     },
-    "dependent_plugins": {
-        "cordova-plugin-googleplayservices": {
-            "PACKAGE_NAME": "pg.appsflyer.sampleapp"
-        }
-    }
+    "dependent_plugins": {}
 }
