@@ -2,6 +2,7 @@
 # PhoneGap AppsFlyer plugin for Android and iOS. 
 
 Built against Phonegap >= 4.3.x.
+Supports ios 8+
 ## PhoneGap Build ##
 Add the following line to your config xml:
 ```
