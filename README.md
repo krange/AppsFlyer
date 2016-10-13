@@ -1,37 +1,21 @@
 
-# PhoneGap AppsFlyer plugin for Android and iOS. 
 
-Built against Phonegap >= 4.3.x.
-Supports ios 8+
-## PhoneGap Build ##
-Add the following line to your config xml:
-```
-<gap:plugin name="com.appsflyer.phonegap.plugins.appsflyer" version="1.0.1" />
-```
-Add following lines to your code to be able to initialize tracking with your own AppsFlyer dev key:
-```javascript
-document.addEventListener("deviceready", function(){
-    var args = [];
-    var devKey = "xxXXXXXxXxXXXXxXXxxxx8";   // your AppsFlyer devKey
-    args.push(devKey);
-    var userAgent = window.navigator.userAgent.toLowerCase();
-                          
-    if (/iphone|ipad|ipod/.test( userAgent )) {
-        var appId = "123456789";            // your ios app id in app store
-        args.push(appId);
-    }
-	window.plugins.appsFlyer.initSdk(args);
-}, false);
-```
+# Cordova/PhoneGap AppsFlyer plugin for Android and iOS. 
+
+## Supported Platforms
+
+- Android
+- iOS 8+
+
+ `Cordova >= 4.3.x.`
+
+
 
 ## Installation using CLI:
 ```
 $ cordova plugin add https://github.com/AppsFlyerSDK/PhoneGap.git
 ```
-Then reference `appsflyer.js` in `index.html`, after `cordova.js`/`phonegap.js`. Mind the path:
-```html
-<script type="text/javascript" src="js/plugins/appsflyer.js"></script>
-```
+
 ## Manual installation:
 1\. Add the following xml to your `config.xml` in the root directory of your `www` folder:
 ```xml
@@ -65,9 +49,14 @@ Android: Copy `AppsFlyerPlugin.java` to `platforms/android/src/com/appsflyer/cor
 ## Usage:
 
 #### 1\. Set your App_ID (iOS only), Dev_Key and enable AppsFlyer to detect installations, sessions (app opens), and updates.  
-**Note: ** *This is the minimum requirement to start tracking your app installs and it's already implemented in this plugin. You **_MUST_** modify this call and provide:  *
-- *devKey* - Your application devKey provided by AppsFlyer.
-- *appId*  - **For iOS only.** Your iTunes application id.
+> This is the minimum requirement to start tracking your app installs and it's already implemented in this plugin. You **MUST** modify this call and provide:  
+ **-devKey** - Your application devKey provided by AppsFlyer.
+**-appId**  - ***For iOS only.*** Your iTunes application id.
+
+
+**Javascript **
+
+Add following lines to your code to be able to initialize tracking with your own AppsFlyer dev key:
 ```javascript
 document.addEventListener("deviceready", function(){
     var args = [];
@@ -79,9 +68,29 @@ document.addEventListener("deviceready", function(){
         var appId = "123456789";            // your ios app id in app store
         args.push(appId);
     }
-	window.plugins.appsFlyer.initSdk(args);
+    window.plugins.appsFlyer.initSdk(args);
 }, false);
 ```
+
+**For Ionic**
+
+```javascript
+  $ionicPlatform.ready(function() {       
+    
+    var args = [];
+    var devKey = "xxXXXXXxXxXXXXxXXxxxx8";   // your AppsFlyer devKey
+    args.push(devKey);
+                              
+    if (ionic.Platform.isIOS()) {
+        var appId = "123456789";            // your ios app id in app store
+        args.push(appId);
+    }
+
+      window.plugins.appsFlyer.initSdk(args);   
+    
+  });
+```
+
 
 #### 2\. Set currency code (optional)
 ```javascript
@@ -119,7 +128,7 @@ window.plugins.appsFlyer.getAppsFlyerUID(getUserIdCallbackFn);
 ###### Example:
 ```javascript
 var getUserIdCallbackFn = function(id) {
-	alert('received id is: ' + id);
+    alert('received id is: ' + id);
 }
 window.plugins.appsFlyer.getAppsFlyerUID(getUserIdCallbackFn);
 ```
@@ -129,7 +138,7 @@ Deep-linking). Read more: [Android](http://support.appsflyer.com/entries/6979669
 ###### Example:
 ```javascript
 document.addEventListener('onInstallConversionDataLoaded', function(e){
-	var attributionData = (JSON.stringify(e.detail));
-	alert(attributionData);
+    var attributionData = (JSON.stringify(e.detail));
+    alert(attributionData);
 }, false);
 ```

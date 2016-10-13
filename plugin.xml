@@ -33,6 +33,9 @@
 
     <!-- android -->
     <platform name="android">
+
+        <framework src="platform/android/cordovaAF.gradle" custom="true" type="gradleReference" />
+
         <js-module src="www/appsflyer.js" name="appsflyer">
             <clobbers target="window.plugins.appsFlyer" />
         </js-module>
@@ -56,8 +59,12 @@
 
         <source-file src="platform/android/com/appsflyer/cordova/plugin/AppsFlyerPlugin.java" target-dir="src/com/appsflyer/cordova/plugin" />
         <source-file src="platform/android/libs/AF-Android-SDK.jar" target-dir="libs"/>
-
     </platform>
+
+
+
+    
+
 
     <!-- ios -->
     <platform name="ios">
