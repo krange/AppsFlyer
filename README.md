@@ -54,9 +54,11 @@ Android: Copy `AppsFlyerPlugin.java` to `platforms/android/src/com/appsflyer/cor
 **-appId**  - ***For iOS only.*** Your iTunes application id.
 
 
-**Javascript **
+
 
 Add following lines to your code to be able to initialize tracking with your own AppsFlyer dev key:
+
+**for pure Cordova:**
 ```javascript
 document.addEventListener("deviceready", function(){
     var args = [];
