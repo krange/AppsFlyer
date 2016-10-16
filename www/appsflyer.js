@@ -1,4 +1,9 @@
 
+    var exec = require('cordova/exec'),
+    argscheck = require('cordova/argscheck');
+    //AppsFlyerError = require('./AppsFlyerError')
+
+
     if (!window.CustomEvent) {
         window.CustomEvent = function (type, config) {
             var e = document.createEvent("CustomEvent");
@@ -8,30 +13,34 @@
     }
 
     (function (global) {
-        var AppsFlyer;
-        AppsFlyer = function () {
-        };
+        var AppsFlyer = function () {};
 
         AppsFlyer.prototype.initSdk = function (args) {
-            cordova.exec(null, null, "AppsFlyerPlugin", "initSdk", args);
+            argscheck.checkArgs('A', 'AppsFlyer.initSdk', arguments);
+            exec(null, null, "AppsFlyerPlugin", "initSdk", args);
         };
 
         AppsFlyer.prototype.setCurrencyCode = function (currencyId) {
-            cordova.exec(null, null, "AppsFlyerPlugin", "setCurrencyCode", [currencyId]);
+            argscheck.checkArgs('S', 'AppsFlyer.setCurrencyCode', arguments);
+            exec(null, null, "AppsFlyerPlugin", "setCurrencyCode", [currencyId]);
         };
 
         AppsFlyer.prototype.setAppUserId = function (customerUserId) {
-            cordova.exec(null, null, "AppsFlyerPlugin", "setAppUserId", [customerUserId]);
+             argscheck.checkArgs('S', 'AppsFlyer.setAppUserId', arguments);
+            exec(null, null, "AppsFlyerPlugin", "setAppUserId", [customerUserId]);
         };
         AppsFlyer.prototype.setGCMProjectID = function (GCMProjectID) {
-            cordova.exec(null, null, "AppsFlyerPlugin", "setGCMProjectID", [GCMProjectID]);
+            argscheck.checkArgs('S', 'AppsFlyer.setGCMProjectID', arguments);
+            exec(null, null, "AppsFlyerPlugin", "setGCMProjectID", [GCMProjectID]);
         };
         AppsFlyer.prototype.registerUninstall = function (token) {
-            cordova.exec(null, null, "AppsFlyerPlugin", "registerUninstall", [token]);
+            argscheck.checkArgs('S', 'AppsFlyer.registerUninstall', arguments);
+            exec(null, null, "AppsFlyerPlugin", "registerUninstall", [token]);
         };
-        AppsFlyer.prototype.getAppsFlyerUID = function (callbackFn) {
-            cordova.exec(function (result) {
-                callbackFn(result);
+        AppsFlyer.prototype.getAppsFlyerUID = function (successCB) {
+            argscheck.checkArgs('F', 'AppsFlyer.getAppsFlyerUID', arguments);
+            exec(function (result) {
+                successCB(result);
             }, null,
                     "AppsFlyerPlugin",
                     "getAppsFlyerUID",
@@ -39,7 +48,8 @@
         };
 
         AppsFlyer.prototype.trackEvent = function (eventName, eventValue) {
-            cordova.exec(null, null, "AppsFlyerPlugin", "trackEvent", [eventName, eventValue]);
+            argscheck.checkArgs('SO', 'AppsFlyer.trackEvent', arguments);
+            exec(null, null, "AppsFlyerPlugin", "trackEvent", [eventName, eventValue]);
         };
 
         AppsFlyer.prototype.onInstallConversionDataLoaded = function (conversionData) {
@@ -65,3 +75,12 @@
             global.plugins.appsFlyer = new AppsFlyer();
         });
     }(window));
+
+    /*var typeMap = {
+    'A': 'Array',
+    'D': 'Date',
+    'N': 'Number',
+    'S': 'String',
+    'F': 'Function',
+    'O': 'Object'
+};*/
