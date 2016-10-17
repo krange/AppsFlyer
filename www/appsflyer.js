@@ -1,7 +1,7 @@
 
     var exec = require('cordova/exec'),
-    argscheck = require('cordova/argscheck');
-    //AppsFlyerError = require('./AppsFlyerError')
+        argscheck = require('cordova/argscheck');
+    
 
 
     if (!window.CustomEvent) {
