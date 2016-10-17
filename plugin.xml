@@ -35,11 +35,7 @@
             <clobbers target="window.plugins.appsFlyer" />
     </js-module>
 
-    <js-module src="www/AppsFlyerError.js" name="AppsFlyerError">
-        <clobbers target="AppsFlyerError" />
-    </js-module>
-
-
+    
 
     <!-- android -->
     <platform name="android">
