@@ -148,38 +148,45 @@ document.addEventListener('onInstallConversionDataLoaded', function(e){
 API Methods
 ===================
 **`initSdk(options): void`**
-Establishes connection with the remote host.
+
 
 | parameter   | type                        | description |
 | ----------- |-----------------------------|--------------|
 | `options`   | `List`                      | |
 
 **`setCurrencyCode(currencyId): void`**
+
 | parameter   | type                        | description |
 | ----------- |-----------------------------|--------------|
 | `currencyId`   | `String`                      | |
 
 **`setAppUserId(customerUserId): void`**
+
 | parameter   | type                        | description |
 | ----------- |-----------------------------|--------------|
 | `customerUserId`   | `String`                      | |
 
 **`setGCMProjectID(GCMProjectID): void`**
+
 | parameter   | type                        | description |
 | ----------- |-----------------------------|--------------|
 | `GCMProjectID`   | `String`                      | |
 
 **`registerUninstall(token): void`**
+
 | parameter   | type                        | description |
 | ----------- |-----------------------------|--------------|
 | `token`   | `String`                      | |
 
 **`getAppsFlyerUID(successCB): void`**
+
 | parameter   | type                        | description |
 | ----------- |-----------------------------|--------------|
 | `successCB` | `() => void`                | Success callback |
 
 **`trackEvent(eventName, eventValue): void`**
+Tracking in-app events helps you measure and analyze how loyal users discover your app, and attribute them to specific campaigns/media sources. It is recommended to take the time and define the events you want to measure to allow you to track ROI (Return on Investment) and LTV (Lifetime Value).
+
 | parameter   | type                        | description |
 | ----------- |-----------------------------|--------------|
 | `eventName` | `String`                    |  |
@@ -187,6 +194,7 @@ Establishes connection with the remote host.
 
 
 **`onInstallConversionDataLoaded(conversionData): void`**
+
 | parameter   | type                        | description |
 | ----------- |-----------------------------|--------------|
 | `conversionData` | `Object`                    |  |
