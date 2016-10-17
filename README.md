@@ -149,6 +149,7 @@ API Methods
 ===================
 **`initSdk(options): void`**
 
+initialize the SDK.
 
 | parameter   | type                        | description |
 | ----------- |-----------------------------|--------------|
@@ -162,17 +163,23 @@ API Methods
 
 **`setAppUserId(customerUserId): void`**
 
+ set your Customer User ID.
+
 | parameter   | type                        | description |
 | ----------- |-----------------------------|--------------|
 | `customerUserId`   | `String`                      | |
 
 **`setGCMProjectID(GCMProjectID): void`**
 
+Set the GCM API key. AppsFlyer requires a Google Project Number and GCM API Key to enable uninstall tracking.
+
 | parameter   | type                        | description |
 | ----------- |-----------------------------|--------------|
 | `GCMProjectID`   | `String`                      | |
 
 **`registerUninstall(token): void`**
+
+AEnables tracking app. uninstalls.
 
 | parameter   | type                        | description |
 | ----------- |-----------------------------|--------------|
@@ -185,6 +192,7 @@ API Methods
 | `successCB` | `() => void`                | Success callback |
 
 **`trackEvent(eventName, eventValue): void`**
+
 Tracking in-app events helps you measure and analyze how loyal users discover your app, and attribute them to specific campaigns/media sources. It is recommended to take the time and define the events you want to measure to allow you to track ROI (Return on Investment) and LTV (Lifetime Value).
 
 | parameter   | type                        | description |
