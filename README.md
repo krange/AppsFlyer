@@ -144,3 +144,49 @@ document.addEventListener('onInstallConversionDataLoaded', function(e){
     alert(attributionData);
 }, false);
 ```
+
+API Methods
+===================
+**`initSdk(options): void`**
+Establishes connection with the remote host.
+
+| parameter   | type                        | description |
+| ----------- |-----------------------------|--------------|
+| `options`   | `List`                      | |
+
+**`setCurrencyCode(currencyId): void`**
+| parameter   | type                        | description |
+| ----------- |-----------------------------|--------------|
+| `currencyId`   | `String`                      | |
+
+**`setAppUserId(customerUserId): void`**
+| parameter   | type                        | description |
+| ----------- |-----------------------------|--------------|
+| `customerUserId`   | `String`                      | |
+
+**`setGCMProjectID(GCMProjectID): void`**
+| parameter   | type                        | description |
+| ----------- |-----------------------------|--------------|
+| `GCMProjectID`   | `String`                      | |
+
+**`registerUninstall(token): void`**
+| parameter   | type                        | description |
+| ----------- |-----------------------------|--------------|
+| `token`   | `String`                      | |
+
+**`getAppsFlyerUID(successCB): void`**
+| parameter   | type                        | description |
+| ----------- |-----------------------------|--------------|
+| `successCB` | `() => void`                | Success callback |
+
+**`trackEvent(eventName, eventValue): void`**
+| parameter   | type                        | description |
+| ----------- |-----------------------------|--------------|
+| `eventName` | `String`                    |  |
+| `eventValue` | `Object`                    |  |
+
+
+**`onInstallConversionDataLoaded(conversionData): void`**
+| parameter   | type                        | description |
+| ----------- |-----------------------------|--------------|
+| `conversionData` | `Object`                    |  |
