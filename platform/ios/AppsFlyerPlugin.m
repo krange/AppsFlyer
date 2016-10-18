@@ -1,34 +1,119 @@
 #import "AppsFlyerPlugin.h"
-#import "AppsFlyer.h"
+#import "AppsFlyerTracker.h"
 
 @implementation AppsFlyerPlugin
 
 - (CDVPlugin *)initWithWebView:(UIWebView *)theWebView
 {
-	self = (AppsFlyerPlugin *)[super initWithWebView:theWebView];
-	return self;
+    [self pluginInitialize];
+    return self;
 }
 
-- (void)notifyAppID:(CDVInvokedUrlCommand*)command
+- (void)initSdk:(CDVInvokedUrlCommand*)command
 {
     if ([command.arguments count] < 2) {
-		return;
-	}
-    
-    NSString* appId = [command.arguments objectAtIndex:0];
-    NSString* devKey = [command.arguments objectAtIndex:1];
-    NSString* identifier = [appId stringByAppendingString:@";"];
-    identifier = [identifier stringByAppendingString:devKey];
-    
-    //#ifdef CONFIGURATION_Release
-    if ([command.arguments count] == 2) {
-        [AppsFlyer notifyAppID:identifier];
-    } else if ([command.arguments count] == 3) {
-        [AppsFlyer notifyAppID:identifier event:[command.arguments objectAtIndex:2] eventValue:nil];
-    } else if ([command.arguments count] == 4) {
-        [AppsFlyer notifyAppID:identifier event:[command.arguments objectAtIndex:2] eventValue:[command.arguments objectAtIndex:3]];
+        return;
     }
-    //#endif
+    
+    NSString* devKey = [command.arguments objectAtIndex:0];
+    NSString* appId = [command.arguments objectAtIndex:1];    
+    
+    [AppsFlyerTracker sharedTracker].appleAppID = appId;
+    [AppsFlyerTracker sharedTracker].appsFlyerDevKey = devKey;
+    [AppsFlyerTracker sharedTracker].delegate = self;
+    [AppsFlyerTracker sharedTracker].isDebug = YES;
+    [[AppsFlyerTracker sharedTracker] trackAppLaunch];
+    
+  }
+
+- (void)setCurrencyCode:(CDVInvokedUrlCommand*)command
+{
+    if ([command.arguments count] == 0) {
+        return;
+    }
+    
+    NSString* currencyId = [command.arguments objectAtIndex:0];
+    [AppsFlyerTracker sharedTracker].currencyCode = currencyId;
+}
+
+- (void)setAppUserId:(CDVInvokedUrlCommand *)command
+{
+    if ([command.arguments count] == 0) {
+        return;
+    }
+    
+    NSString* userId = [command.arguments objectAtIndex:0];
+    [AppsFlyerTracker sharedTracker].customerUserID  = userId;
+}
+
+- (void)getAppsFlyerUID:(CDVInvokedUrlCommand *)command
+{
+    NSString* userId = [[AppsFlyerTracker sharedTracker] getAppsFlyerUID];
+    CDVPluginResult *pluginResult = [ CDVPluginResult
+                                    resultWithStatus    : CDVCommandStatus_OK
+                                    messageAsString: userId
+                                    ];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+- (void)sendTrackingWithEvent:(CDVInvokedUrlCommand *)command
+{
+    if ([command.arguments count] < 2) {
+        return;
+    }
+    
+    NSString* eventName = [command.arguments objectAtIndex:0];
+    NSString* eventValue = [command.arguments objectAtIndex:1];
+    [[AppsFlyerTracker sharedTracker] trackEvent:eventName withValue:eventValue];
+}
+
+-(void)onConversionDataReceived:(NSDictionary*) installData {
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:installData
+                                            options:0
+                                            error:&error];
+    if (jsonData) {
+        NSString *JSONString = [[NSString alloc] initWithBytes:[jsonData bytes] length:[jsonData length] encoding:NSUTF8StringEncoding];
+        
+        [self performSelectorOnMainThread:@selector(reportConversionData:) withObject:JSONString waitUntilDone:NO];
+        NSLog(@"JSONString = %@",JSONString);
+
+    } else {
+        NSLog(@"%@",error);
+    }
+}
+
+-(void) reportConversionData:(NSString *)data {
+    
+    [[super webViewEngine] evaluateJavaScript:[NSString stringWithFormat:@"javascript:window.plugins.appsFlyer.onInstallConversionDataLoaded(%@)", data] completionHandler:nil];
+
+}
+
+-(void)onConversionDataRequestFailure:(NSError *) error {
+    
+    NSLog(@"%@",error);
+    
+}
+
+- (void)trackEvent:(CDVInvokedUrlCommand*)command {
+
+    NSString* eventName = [command.arguments objectAtIndex:0];
+    NSDictionary* eventValues = [command.arguments objectAtIndex:1];
+    [[AppsFlyerTracker sharedTracker] trackEvent:eventName withValues:eventValues];
+
+}
+
+- (void)registerUninstall:(CDVInvokedUrlCommand*)command {
+
+    NSData* token = [command.arguments objectAtIndex:0];
+    NSString *deviceToken = [NSString stringWithFormat:@"%@",token];
+    
+    if(deviceToken!=nil){
+        [[AppsFlyerTracker sharedTracker] registerUninstall:token];
+    }else{
+        NSLog(@"Invalid device token");
+    }
+
 }
 
 @end
